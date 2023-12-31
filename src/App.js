@@ -9,7 +9,23 @@ const url = `api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=f
 
   return (
     <div className="App">
- 
+      <div className="container">
+        <div className="top">
+          <div className="location">
+<p1>Dallas</p1>
+          </div>
+          <div className="temp">
+            <h1>50 deg F</h1>
+          </div>
+          <h2>Description</h2>
+          <p>Clouds</p>
+        </div>
+      </div>
+ <div className="bottom">
+  <div className="feels">
+    <p>65deg F</p>
+  </div>
+ </div>
         <h1>Welcome to the weather app!</h1>
       
     </div>
