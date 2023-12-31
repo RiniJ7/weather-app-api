@@ -25,6 +25,9 @@ const url = `api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=f
   <div className="feels">
     <p>65deg F</p>
   </div>
+  <div className="humidity">
+    <p>20%</p>
+  </div>
  </div>
         <h1>Welcome to the weather app!</h1>
       
