@@ -22,6 +22,14 @@ const searchLocation = (event) => {
 
   return (
     <div className="App">
+      <div className="search">
+        <input
+        value={location}
+        onChange={event => setLocation(event.target.value)}
+        onKeyPress={searchLocation}
+        placeholder='Enter Location'
+        type='text'/>
+      </div>
       <div className="container">
         <div className="top">
           <div className="location">
