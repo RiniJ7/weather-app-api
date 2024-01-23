@@ -9,7 +9,17 @@ function App() {
   // const url = `api.openweathermap.org/data/2.5/weather?lat=51.049999&lon=-114.066666&appid={APIKEY}`;
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${process.env.REACT_APP_APIKEY}`;
-  
+  console.log("API Request URL:", url);
+
+  axios
+    .get(url)
+    .then((response) => {
+      setData(response.data);
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error("API Request Error:", error);
+    });
 
   const searchLocation = (event) => {
     if (event.key === "Enter") {
