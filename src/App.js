@@ -8,7 +8,8 @@ function App() {
 
   // const url = `api.openweathermap.org/data/2.5/weather?lat=51.049999&lon=-114.066666&appid={APIKEY}`;
 
-  const url = `api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid={APIKEY}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${process.env.REACT_APP_APIKEY}`;
+  
 
   const searchLocation = (event) => {
     if (event.key === "Enter") {
