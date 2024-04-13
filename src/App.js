@@ -6,41 +6,28 @@ function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
 
-  // const url = `api.openweathermap.org/data/2.5/weather?lat=51.049999&lon=-114.066666&appid={APIKEY}`;
-
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${process.env.REACT_APP_APIKEY}`;
-  console.log("API Request URL:", url);
-
-  axios
-    .get(url)
-    .then((response) => {
-      setData(response.data);
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.error("API Request Error:", error);
-    });
-
-  const searchLocation = (event) => {
-    if (event.key === "Enter") {
+  //const apiKey = process.env.REACT_APP_API_KEY; //Reference the API key
+ const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=fe9d5f6f0f3c4b2ac5d8c9f3bd88a60f`;
+  
+   const searchLocation = (event) => {
+    if (event.key === 'Enter') {
       axios.get(url).then((response) => {
-        setData(response.data);
-        console.log(response.data);
-      });
-      setLocation("");
+        setData(response.data)
+        console.log(response.data)
+      })
+      setLocation('')
     }
-  };
+  }
 
   return (
     <div className="app">
       <div className="search">
         <input
           value={location}
-          onChange={(event) => setLocation(event.target.value)}
-          onKeyDown={searchLocation}
-          placeholder="Enter Location"
-          type="text"
-        />
+          onChange={event => setLocation(event.target.value)}
+          onKeyPress={searchLocation}
+          placeholder='Enter Location'
+          type="text" />
       </div>
       <div className="container">
         <div className="top">
@@ -55,26 +42,23 @@ function App() {
           </div>
         </div>
 
-        {data.name !== undefined && (
+           {data.name !== undefined &&
           <div className="bottom">
             <div className="feels">
-              {data.main ? (
-                <p className="bold">{data.main.feels_like.toFixed()}°F</p>
-              ) : null}
+              {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°F</p> : null}
               <p>Feels Like</p>
             </div>
             <div className="humidity">
-              {data.main ? <p className="bold">{data.main.humidity}%</p> : null}
+              {data.main ? <p className='bold'>{data.main.humidity}%</p> : null}
               <p>Humidity</p>
             </div>
             <div className="wind">
-              {data.wind ? (
-                <p className="bold">{data.wind.speed.toFixed()} MPH</p>
-              ) : null}
+              {data.wind ? <p className='bold'>{data.wind.speed.toFixed()} MPH</p> : null}
               <p>Wind Speed</p>
             </div>
           </div>
-        )}
+        }
+
       </div>
     </div>
   );
