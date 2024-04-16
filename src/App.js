@@ -5,6 +5,7 @@ import "./App.css";
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
+  const [error, setError] = useState(null);
 
   //const apiKey = process.env.REACT_APP_API_KEY; //Reference the API key
  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=fe9d5f6f0f3c4b2ac5d8c9f3bd88a60f`;
@@ -12,11 +13,18 @@ function App() {
    const searchLocation = (event) => {
     if (event.key === 'Enter') {
       axios.get(url).then((response) => {
-        setData(response.data)
-        console.log(response.data)
+        setData(response.data);
+        console.log(response.data);
+        setError(null);
       })
-      setLocation('')
-    }
+      .catch((error) => {
+        setError("Please enter the correct location name!");
+        console.error("error fetching data", error);
+      })
+      .finally(() => {
+        setLocation('');
+      });
+     }
   }
 
   return (
@@ -32,7 +40,7 @@ function App() {
       <div className="container">
         <div className="top">
           <div className="location">
-            <p>{data.name}</p>
+          {error ? <p className="error">{error}</p> : <p>{data.name}</p>}
           </div>
           <div className="temp">
             {data.main ? <h1>{((data.main.temp - 32) * 5/9).toFixed()}°C</h1> : null}
