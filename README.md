@@ -1,7 +1,7 @@
 
 # Weather Application
 
-This is a simple weather application built using React, HTML5, CSS, and JavaScript. It allows users to search for weather information by location. The weather app API is used to integrate into this project.
+This is a simple weather application built using React, HTML5, CSS, and JavaScript. It allows users to search for weather information by location. The Open weather app API is used to integrate into this project.
 
 ## Demo
 
