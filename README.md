@@ -21,6 +21,7 @@ This is a simple weather application built using React, HTML5, CSS, and JavaScri
 - HTML5
 - JavaScript
 - Axios (for fetching weather data)
+- Vercel
 
 ## Installation
 
